@@ -15,24 +15,9 @@ This assessment involves building a **semantic search API** using **Pinecone** f
    - Stores generated embeddings in **Pinecone** for efficient retrieval.  
 
 3. **Search Functionality**  
-   - Performs similarity search on stored embeddings using **cosine similarity**.  
+   - Performs similarity search on stored embeddings using **cosine similarity**. (cosine is the default one can be modified with parameterised metric)
 
-## **Brief Explanation of the Approach**  
-The API takes raw text input and converts it into embeddings using Hugging Faceâ€™s `msmarco-MiniLM-L12-cos-v5` model. These vector embeddings are stored in Pinecone, which enables efficient semantic search by comparing new query embeddings with stored vectors. When a search request is made, the input text is first embedded, and a similarity search is performed against the stored vectors using cosine similarity, returning the most relevant results.  
-
-## **Step-by-Step Flow of API Calls**  
-1. **Document Addition**:  
-   - The user sends a **POST request** with a text document.  
-   - The document is embedded using the Hugging Face model.  
-   - The resulting vector is stored in **Pinecone** with a unique ID.  
-
-2. **Search Request**:  
-   - The user sends a **GET request** with a query.  
-   - The query text is embedded using the same model.  
-   - A similarity search is performed against stored vectors in Pinecone.  
-   - The most relevant matches are returned in response.  
-
-## **Running the Project Locally**  
+The API takes raw text input and converts it into embeddings using Hugging Face. These vector embeddings are stored in Pinecone, which enables efficient semantic search by comparing new query embeddings with stored vectors. When a search request is made, the input text is first embedded, and a similarity search is performed against the stored vectors using similarity (cosine for default), returning the most relevant results.  
 
 ### **Setup**  
 
@@ -40,7 +25,6 @@ The API takes raw text input and converts it into embeddings using Hugging Faceâ
 - Node.js  
 - A Hugging Face API Key  
 - A Pinecone API Key and Index  
-\
 
 ## Test Run
 1)
