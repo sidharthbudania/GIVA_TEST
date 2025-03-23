@@ -18,7 +18,7 @@ async function storeEmbeddings() {
   }));
 
   await index.upsert(vectors);
-  console.log("Embeddings stored in Pinecone");
+  console.log("embedings stored in Pinecone");
 }
 
 storeEmbeddings();
