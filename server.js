@@ -32,14 +32,14 @@ app.get("/api/search", async (req, res) => {
 
       res.json(searchResults.matches.map(match => match.metadata.text));
   } catch (error) {
-      res.status(500).json({ error: "Internal server error" });
+      res.status(500).json({ error: "server error" });
   }
 });
 
 app.post("/api/add", async (req, res) => {
     try {
         const { id, text } = req.body;
-        if (!id || !text) return res.status(400).json({ error: "Missing id or text" });
+        if (!id || !text) return res.status(400).json({ error: "missing id or text" });
 
         const vector = await hf.featureExtraction({
             model: "sentence-transformers/all-MiniLM-L6-v2",
@@ -50,10 +50,10 @@ app.post("/api/add", async (req, res) => {
             { id: id, values: vector, metadata: { text } }
         ]);
 
-        res.json({ message: "Document indexed successfully" });
+        res.json({ message: "document indexed done" });
     } catch (error) {
-        res.status(500).json({ error: "Internal server error" });
+        res.status(500).json({ error: "server error" });
     }
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`server running on port ${PORT}`));
